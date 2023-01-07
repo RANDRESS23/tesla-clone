@@ -32,6 +32,7 @@ export default function Home () {
 }
 
 const Container = styled.div`
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
   height: 100vh;
-  
 `

@@ -28,6 +28,7 @@ const Wrap = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-image: ${props => `url('../../public/images/${props.bgImage}')`};
+  scroll-snap-align: start;
 `
 const ItemText = styled.div`
   
