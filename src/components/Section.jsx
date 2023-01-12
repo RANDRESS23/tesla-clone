@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default function Section ({
-  title, subtitle, txtLeftButton, txtRightButton, backgroundImg
+  title, subtitle, txtLeftButton, txtRightButton, backgroundImg, showNavBurger
 }) {
   return (
     <Wrap bgImage={backgroundImg}>
@@ -10,10 +10,11 @@ export default function Section ({
         <SubTitle>{subtitle}</SubTitle>
       </ItemText>
       <ButtonGroup>
-        <LeftButton>{txtLeftButton}</LeftButton>
-        {txtRightButton !== '' && <RightButton>{txtRightButton}</RightButton>}
+        <LeftButton showNavBurger={showNavBurger}>{txtLeftButton}</LeftButton>
+        {txtRightButton !== '' &&
+          <RightButton showNavBurger={showNavBurger}>{txtRightButton}</RightButton>}
       </ButtonGroup>
-      <DownArrow src='../../public/images/down-arrow.svg' />
+      <DownArrow src='../../public/images/down-arrow.svg' showNavBurger={showNavBurger} />
     </Wrap>
   )
 }
@@ -71,7 +72,7 @@ const LeftButton = styled.a`
   color: #ffffff;
   border-radius: 4px;
   background-color: rgba(23, 26, 32, 0.8);
-  backdrop-filter: blur(8px);
+  ${props => !props.showNavBurger && 'backdrop-filter: blur(8px)'};
   cursor: pointer;
 
   @media (max-width: 768px) {
@@ -85,10 +86,10 @@ const RightButton = styled(LeftButton)`
 `
 
 const DownArrow = styled.img`
-  opacity: .8;
+  ${props => !props.showNavBurger && 'opacity: .8'};
+  ${props => !props.showNavBurger && 'animation: animationDown infinite 2s'};
   margin: 0px auto 20px auto;
   width: 35px;
   height: 40px;
-  animation: animationDown infinite 2s;
   cursor: pointer;
 `

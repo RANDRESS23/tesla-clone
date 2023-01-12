@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
+import LanguageIcon from '@mui/icons-material/Language'
+import { BurgerNavItems } from '../services/BurgerNavItems'
 
-export default function Header () {
+export default function Header ({ showNavBurger, setShowNavBurger }) {
   return (
     <Container>
       <ImgContainer href='#'>
@@ -31,17 +33,40 @@ export default function Header () {
       </Menu>
       <Menu>
         <MenuUl>
-          <ItemList>
+          <ItemList isView={false}>
             <LinkMenu href='#'>Shop</LinkMenu>
           </ItemList>
-          <ItemList>
+          <ItemList isView={false}>
             <LinkMenu href='#'>Account</LinkMenu>
+          </ItemList>
+          <ItemList isView>
+            <LinkMenu href='#' onClick={() => setShowNavBurger(true)}>Menu</LinkMenu>
           </ItemList>
         </MenuUl>
       </Menu>
-      <CustomHamburgerMenu>
-        <MenuIcon />
-      </CustomHamburgerMenu>
+      <BurgerNavContainer showNavBurger={showNavBurger}>
+        <BurgerNav showNavBurger={showNavBurger}>
+          <CloseContainer>
+            <CloseIconContainer onClick={() => setShowNavBurger(false)}>
+              <CloseIcon />
+            </CloseIconContainer>
+          </CloseContainer>
+          {
+              BurgerNavItems.map(({ name, url }) => (
+                <BurgerItem key={name}>
+                  <BurgerLink href={url}>{name}</BurgerLink>
+                </BurgerItem>
+              ))
+              }
+          <LanguageContainer>
+            <LanguageIcon />
+            <LanguageTitleContainer>
+              <LanguageTitle>United States</LanguageTitle>
+              <LanguageSubTitle>English</LanguageSubTitle>
+            </LanguageTitleContainer>
+          </LanguageContainer>
+        </BurgerNav>
+      </BurgerNavContainer>
     </Container>
   )
 }
@@ -53,7 +78,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 30px;
   /* background-color: red; */
 `
 
@@ -68,9 +93,9 @@ const Logo = styled.img`
 `
 
 const Menu = styled.div`
-  @media (max-width: 1115px) {
+  /* @media (max-width: 1115px) {
     display: none;
-  }
+  } */
 `
 
 const MenuUl = styled.ul`
@@ -78,10 +103,11 @@ const MenuUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: lightgreen; */
 `
 const ItemList = styled.li`
-  /* background-color: pink; */
+  @media (max-width: 1115px) {
+    display: ${props => props.isView ? 'block' : 'none'};
+  }
 `
 
 const LinkMenu = styled.a`
@@ -95,13 +121,108 @@ const LinkMenu = styled.a`
     background-color: #d7e4ee;
   }
 `
-const CustomHamburgerMenu = styled.div`
-  display: none;
+
+const BurgerNavContainer = styled.div`
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(23, 26, 32, 0.35);
+  backdrop-filter: blur(4px);
+  transform: ${props => props.showNavBurger ? 'translateX(0%)' : 'translateX(100%)'};
+  /* opacity: ${props => props.showNavBurger ? '1' : '0'}; */
+  transition: transform .6s ease;
+`
+
+const BurgerNav = styled.ul`
+  width: 310px;
+  overflow-y: scroll;
+  background-color: #fff;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+  /* transform: ${props => props.showNavBurger ? 'translateX(0%)' : 'translateX(30px)'}; */
+  /* transition: transform .2s ease; */
+`
+
+const CloseContainer = styled.div`
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #fff;
+`
+
+const CloseIconContainer = styled.div`
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: .3s ease all;
   cursor: pointer;
 
-  @media (max-width: 1115px) {
-    display: block;
+  :hover {
+    background-color: #f2f2f2;
   }
 `
-// https://www.npmjs.com/package/react-intersection-observer
-// https://codesandbox.io/s/inview-render-props-hvhcb?fontsize=14&hidenavigation=1&theme=dark&file=/src/index.tsx
+
+const BurgerItem = styled.li`
+  padding: 4px 30px 4px 30px;
+`
+
+const BurgerLink = styled.a`
+  font-size: 16px;
+  font-weight: 600;
+  padding: 7px 16px 7px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  transition: .3s ease all;
+  
+  :hover {
+    background-color: #f2f2f2;
+  }
+`
+
+const LanguageContainer = styled.div`
+  display: flex;
+  margin: 4px 30px 4px 30px;
+  padding: 7px 16px 7px 15px;
+  transition: .3s ease all;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  :hover {
+    background-color: #f2f2f2;
+  }
+`
+
+const LanguageTitleContainer = styled.div`
+  padding-left: 7px;
+`
+
+const LanguageTitle = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+`
+
+const LanguageSubTitle = styled.p`
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+  transition: .5s ease all;
+  width: 45px;
+
+  :hover {
+    border-bottom: 2px solid #000;
+  }
+`

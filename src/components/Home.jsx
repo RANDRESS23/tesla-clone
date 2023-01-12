@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Section from './Section'
-import { Sections } from './Sections'
+import { Sections } from '../services/Sections'
 
-export default function Home () {
+export default function Home ({ showNavBurger }) {
   return (
     <Container>
       {
@@ -23,6 +23,7 @@ export default function Home () {
               txtLeftButton={txtLeftButton}
               txtRightButton={txtRightButton}
               backgroundImg={backgroundImg}
+              showNavBurger={showNavBurger}
             />
           )
         })
