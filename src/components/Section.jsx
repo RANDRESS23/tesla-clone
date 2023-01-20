@@ -14,7 +14,9 @@ export default function Section ({
         {txtRightButton !== '' &&
           <RightButton showNavBurger={showNavBurger}>{txtRightButton}</RightButton>}
       </ButtonGroup>
-      <DownArrow src='../../public/images/down-arrow.svg' showNavBurger={showNavBurger} />
+      {title === 'Model Y'
+        ? <DownArrow src='../../public/images/down-arrow.svg' showNavBurger={showNavBurger} />
+        : <p>''</p>}
     </Wrap>
   )
 }
