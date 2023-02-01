@@ -79,12 +79,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  /* background-color: red; */
 `
 
 const ImgContainer = styled.a`
   padding-left: 28px;
-  /* background-color: aqua; */
 `
 
 const Logo = styled.img`
@@ -93,9 +91,7 @@ const Logo = styled.img`
 `
 
 const Menu = styled.div`
-  /* @media (max-width: 1115px) {
-    display: none;
-  } */
+  
 `
 
 const MenuUl = styled.ul`
@@ -116,6 +112,7 @@ const LinkMenu = styled.a`
   padding: 7px 16px;
   border-radius: 4px;
   text-decoration: none;
+  transition: .3s ease all;
 
   :hover {
     background-color: #d7e4ee;
@@ -134,7 +131,6 @@ const BurgerNavContainer = styled.div`
   background-color: rgba(23, 26, 32, 0.35);
   backdrop-filter: blur(4px);
   transform: ${props => props.showNavBurger ? 'translateX(0%)' : 'translateX(100%)'};
-  /* opacity: ${props => props.showNavBurger ? '1' : '0'}; */
   transition: transform .6s ease;
 `
 
@@ -146,8 +142,6 @@ const BurgerNav = styled.ul`
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
-  /* transform: ${props => props.showNavBurger ? 'translateX(0%)' : 'translateX(30px)'}; */
-  /* transition: transform .2s ease; */
 `
 
 const CloseContainer = styled.div`
