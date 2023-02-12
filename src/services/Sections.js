@@ -1,17 +1,17 @@
 export const Sections = [
   {
+    title: 'Model 3',
+    subtitle: 'Leasing starting at $349/mo',
+    txtLeftButton: 'Buy Now',
+    txtRightButton: 'Custom Order',
+    backgroundImg: 'model-3.jpg'
+  },
+  {
     title: 'Model Y',
     subtitle: 'Schedule a Demo Drive',
     txtLeftButton: 'Buy Now',
     txtRightButton: 'Custom Order',
     backgroundImg: 'model-y.jpg'
-  },
-  {
-    title: 'Model 3',
-    subtitle: 'Schedule a Demo Drive',
-    txtLeftButton: 'Buy Now',
-    txtRightButton: 'Custom Order',
-    backgroundImg: 'model-3.jpg'
   },
   {
     title: 'Model S',

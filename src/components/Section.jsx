@@ -1,21 +1,35 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 export default function Section ({
   title, subtitle, txtLeftButton, txtRightButton, backgroundImg, showNavBurger
 }) {
+  const navigate = useNavigate()
+
+  const handleNextSection = () => {
+    document.location.href = '#Model Y'
+    navigate('/')
+  }
+
   return (
-    <Wrap bgImage={backgroundImg}>
-      <ItemText>
+    <Wrap bgImage={backgroundImg} id={title}>
+      <div>
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>
-      </ItemText>
+      </div>
       <ButtonGroup>
         <LeftButton showNavBurger={showNavBurger}>{txtLeftButton}</LeftButton>
         {txtRightButton !== '' &&
           <RightButton showNavBurger={showNavBurger}>{txtRightButton}</RightButton>}
       </ButtonGroup>
-      {title === 'Model Y'
-        ? <DownArrow src='../../public/images/down-arrow.svg' showNavBurger={showNavBurger} />
+      {title === 'Model 3'
+        ? (
+          <DownArrow
+            src='../../public/images/down-arrow.svg'
+            showNavBurger={showNavBurger}
+            onClick={handleNextSection}
+          />
+          )
         : <p>''</p>}
     </Wrap>
   )
@@ -32,9 +46,6 @@ const Wrap = styled.div`
   background-repeat: no-repeat;
   background-image: ${props => `url('../../public/images/${props.bgImage}')`};
   scroll-snap-align: start;
-`
-const ItemText = styled.div`
-  
 `
 
 const Title = styled.h1`

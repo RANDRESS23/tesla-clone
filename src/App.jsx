@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import Home from './components/Home'
+import Home from './pages/Home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 export default function App () {
@@ -8,11 +9,15 @@ export default function App () {
 
   return (
     <div className='App'>
-      <Header
-        showNavBurger={showNavBurger}
-        setShowNavBurger={setShowNavBurger}
-      />
-      <Home showNavBurger={showNavBurger} />
+      <BrowserRouter>
+        <Header
+          showNavBurger={showNavBurger}
+          setShowNavBurger={setShowNavBurger}
+        />
+        <Routes>
+          <Route path='/' element={<Home showNavBurger={showNavBurger} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

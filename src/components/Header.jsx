@@ -2,48 +2,65 @@ import styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close'
 import LanguageIcon from '@mui/icons-material/Language'
 import { BurgerNavItems } from '../services/BurgerNavItems'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function Header ({ showNavBurger, setShowNavBurger }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleRedirectToHome = () => {
+    if (location.pathname === '/') {
+      document.location.href = '#Model 3'
+    }
+    navigate('/')
+  }
+
   return (
     <Container>
-      <ImgContainer href='#'>
+      <ImgContainer onClick={handleRedirectToHome}>
         <Logo src='../../public/images/logo.svg' alt='logo' />
       </ImgContainer>
-      <Menu>
+      <div>
         <MenuUl>
           <ItemList>
-            <LinkMenu href='#'>Model S</LinkMenu>
+            <LinkMenu to='/ModelS'>Model S</LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu href='#'>Model 3</LinkMenu>
+            <LinkMenu to='/Model3'>Model 3</LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu href='#'>Model X</LinkMenu>
+            <LinkMenu to='/ModelX'>Model X</LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu href='#'>Model Y</LinkMenu>
+            <LinkMenu to='/ModelY'>Model Y</LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu href='#'>Solar Roof</LinkMenu>
+            <LinkMenu to='/SolarRoof'>Solar Roof</LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu href='#'>Solar Panels</LinkMenu>
+            <LinkMenu to='/SolarPanels'>Solar Panels</LinkMenu>
           </ItemList>
         </MenuUl>
-      </Menu>
-      <Menu>
+      </div>
+      <div>
         <MenuUl>
           <ItemList isView={false}>
-            <LinkMenu href='#'>Shop</LinkMenu>
+            <LinkMenu to='/Shop'>Shop</LinkMenu>
           </ItemList>
           <ItemList isView={false}>
-            <LinkMenu href='#'>Account</LinkMenu>
+            <LinkMenu to='/Account'>Account</LinkMenu>
           </ItemList>
           <ItemList isView>
-            <LinkMenu href='#' onClick={() => setShowNavBurger(true)}>Menu</LinkMenu>
+            <LinkMenu
+              to='#' onClick={(e) => {
+                e.preventDefault()
+                setShowNavBurger(true)
+              }}
+            >Menu
+            </LinkMenu>
           </ItemList>
         </MenuUl>
-      </Menu>
+      </div>
       <BurgerNavContainer showNavBurger={showNavBurger}>
         <BurgerNav showNavBurger={showNavBurger}>
           <CloseContainer>
@@ -81,17 +98,14 @@ const Container = styled.div`
   padding: 0 30px;
 `
 
-const ImgContainer = styled.a`
+const ImgContainer = styled.div`
   padding-left: 28px;
+  cursor: pointer;
 `
 
 const Logo = styled.img`
   height: 15px;
   width: 130px;
-`
-
-const Menu = styled.div`
-  
 `
 
 const MenuUl = styled.ul`
@@ -106,7 +120,7 @@ const ItemList = styled.li`
   }
 `
 
-const LinkMenu = styled.a`
+const LinkMenu = styled(Link)`
   font-size: 15px;
   font-weight: 600;
   padding: 7px 16px;

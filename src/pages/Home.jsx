@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Section from './Section'
+import Section from '../components/Section'
 import { Sections } from '../services/Sections'
 
 export default function Home ({ showNavBurger }) {
