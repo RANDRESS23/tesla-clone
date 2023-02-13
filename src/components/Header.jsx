@@ -16,7 +16,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
   }
 
   return (
-    <Container>
+    <Container location={location}>
       <ImgContainer onClick={handleRedirectToHome}>
         <Logo src='../../public/images/logo.svg' alt='logo' />
       </ImgContainer>
@@ -91,7 +91,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
 const Container = styled.div`
   width: 100%;
   min-height: 60px;
-  position: fixed;
+  position: ${props => props.location.pathname === '/' ? 'fixed' : 'absolute'};
   display: flex;
   align-items: center;
   justify-content: space-between;

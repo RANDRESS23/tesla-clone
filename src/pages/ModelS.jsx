@@ -1,5 +1,11 @@
+import InteriorModel from '../components/InteriorModel'
+import Model from '../components/Model'
+
 export default function ModelS () {
   return (
-    <div>ModelS</div>
+    <div>
+      <Model />
+      <InteriorModel />
+    </div>
   )
 }
