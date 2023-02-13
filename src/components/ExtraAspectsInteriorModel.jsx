@@ -1,34 +1,54 @@
 import styled from 'styled-components'
 
-export default function ExtraAspectsInteriorModel () {
+export default function ExtraAspectsInteriorModel ({ EXTRA_INFO }) {
   return (
-    <ExtraAspectsInteriorModelContainer>
-      <ExtraInfoContainer>
-        <ImageExtraInfoContainer>
-          <ImageExtraInfo src='../../public/images/connected-interior.jpg' alt='connected-interior' />
-        </ImageExtraInfoContainer>
-        <InfoExtraContainer style={{ paddingLeft: '140px' }}>
-          <TitleExtraInfo>Stay Connected</TitleExtraInfo>
-          <DescriptionExtraInfo>Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.</DescriptionExtraInfo>
-        </InfoExtraContainer>
-      </ExtraInfoContainer>
-      <ExtraInfoContainer>
-        <InfoExtraContainer style={{ paddingRight: '140px' }}>
-          <TitleExtraInfo>Sublime Sound</TitleExtraInfo>
-          <DescriptionExtraInfo>A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers the best listening experience wherever you are.</DescriptionExtraInfo>
-        </InfoExtraContainer>
-        <ImageExtraInfoContainer>
-          <ImageExtraInfo src='../../public/images/sound-interior.jpg' alt='sound-interior' />
-        </ImageExtraInfoContainer>
-      </ExtraInfoContainer>
+    <ExtraAspectsInteriorModelContainer countInfo={EXTRA_INFO.length}>
+      {
+        EXTRA_INFO.map((info, index) => {
+          const { title, description, imgUrl, imgAlt, isVideo } = info
+
+          return (
+            <ExtraInfoContainer key={title}>
+              {
+                (index + 1) % 2 !== 0 && (
+                  <ImageExtraInfoContainer>
+                    {
+                      isVideo
+                        ? <Video src={imgUrl} muted loop autoPlay />
+                        : <ImageExtraInfo src={imgUrl} alt={imgAlt} />
+                    }
+                  </ImageExtraInfoContainer>
+                )
+              }
+              <InfoExtraContainer
+                style={(index + 1) % 2 === 0 ? { paddingRight: '140px' } : { paddingLeft: '140px' }}
+              >
+                <TitleExtraInfo>{title}</TitleExtraInfo>
+                <DescriptionExtraInfo>{description}</DescriptionExtraInfo>
+              </InfoExtraContainer>
+              {
+                (index + 1) % 2 === 0 && (
+                  <ImageExtraInfoContainer>
+                    {
+                      isVideo
+                        ? <Video src={imgUrl} muted loop autoPlay />
+                        : <ImageExtraInfo src={imgUrl} alt={imgAlt} />
+                    }
+                  </ImageExtraInfoContainer>
+                )
+              }
+            </ExtraInfoContainer>
+          )
+        })
+      }
     </ExtraAspectsInteriorModelContainer>
   )
 }
 
 const ExtraAspectsInteriorModelContainer = styled.div`
-  height: 600px;
+  height: ${props => `${props.countInfo * 300}px`};
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: ${props => `repeat(${props.countInfo}, 1fr)`};
 `
 
 const ExtraInfoContainer = styled.div`
@@ -42,6 +62,11 @@ const ImageExtraInfoContainer = styled.div`
 `
 
 const ImageExtraInfo = styled.img`
+  width: 100%;
+  height: 100%;
+`
+
+const Video = styled.video`
   width: 100%;
   height: 100%;
 `

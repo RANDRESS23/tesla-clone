@@ -1,8 +1,13 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import Section from '../components/Section'
 import { Sections } from '../services/Sections'
 
 export default function Home ({ showNavBurger }) {
+  useEffect(() => {
+    document.title = 'Electric Cars, Solar & Clean Energy | Tesla'
+  }, [])
+
   return (
     <Container>
       {

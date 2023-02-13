@@ -1,29 +1,21 @@
 import styled from 'styled-components'
 
-export default function Model () {
+export default function Model ({ bgUrlImage, titleModel, SubTitleModel, stats }) {
   return (
-    <Wrap bgImage='model-s.jpg'>
+    <Wrap bgImage={bgUrlImage}>
       <div>
-        <Title>Model S</Title>
-        <SubTitle>Plaid</SubTitle>
+        <Title>{titleModel}</Title>
+        <SubTitle>{SubTitleModel}</SubTitle>
       </div>
       <StatsContainer>
-        <StatContent>
-          <StatValue>396 mi</StatValue>
-          <StatLabel>Range (Epa est.)</StatLabel>
-        </StatContent>
-        <StatContent>
-          <StatValue>1.99 s</StatValue>
-          <StatLabel>0-60 mph</StatLabel>
-        </StatContent>
-        <StatContent>
-          <StatValue>200 mph</StatValue>
-          <StatLabel>Top Speed</StatLabel>
-        </StatContent>
-        <StatContent>
-          <StatValue>1,020 hp</StatValue>
-          <StatLabel>Peak Power</StatLabel>
-        </StatContent>
+        {
+          stats.map(({ labelStat, valueStat }) => (
+            <StatContent key={labelStat}>
+              <StatValue>{valueStat}</StatValue>
+              <StatLabel>{labelStat}</StatLabel>
+            </StatContent>
+          ))
+        }
         <div>
           <ButtonOrder>Order Now</ButtonOrder>
         </div>

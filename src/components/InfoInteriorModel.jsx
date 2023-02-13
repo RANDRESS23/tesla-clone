@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { VIDEOS } from '../services/VideosInfoInteriorModels'
 import ExtraAspectsInteriorModel from './ExtraAspectsInteriorModel'
 
-export default function InfoInteriorModel ({ videoActive, setVideoActive }) {
+export default function InfoInteriorModel ({ videoActive, setVideoActive, VIDEOS, EXTRA_INFO }) {
   const { idVideo, titleInfoInterior, descriptionInfoInterior } = videoActive
 
   const handleChangeInteriorInfo = ({ idVideoChange }) => {
@@ -64,7 +63,7 @@ export default function InfoInteriorModel ({ videoActive, setVideoActive }) {
         <TitleInfoInterior>{titleInfoInterior}</TitleInfoInterior>
         <DescriptionInfoInterior>{descriptionInfoInterior}</DescriptionInfoInterior>
       </ChangeInteriorModelsInfoContainer>
-      <ExtraAspectsInteriorModel />
+      <ExtraAspectsInteriorModel EXTRA_INFO={EXTRA_INFO} />
     </InfoInteriorModelContainer>
   )
 }

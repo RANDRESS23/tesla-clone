@@ -2,9 +2,8 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import InfoInteriorModel from './InfoInteriorModel'
 import SliderVideosInterior from './SliderVideosInterior'
-import { VIDEOS } from '../services/VideosInfoInteriorModels'
 
-export default function InteriorModel () {
+export default function InteriorModel ({ VIDEOS, EXTRA_INFO }) {
   const [videoActive, setVideoActive] = useState({
     nameVideo: 'interior1.mp4',
     titleInfoInterior: 'Cinematic Experience',
@@ -27,6 +26,8 @@ export default function InteriorModel () {
       <InfoInteriorModel
         videoActive={videoActive}
         setVideoActive={setVideoActive}
+        VIDEOS={VIDEOS}
+        EXTRA_INFO={EXTRA_INFO}
       />
     </InteriorModelContainer>
   )
