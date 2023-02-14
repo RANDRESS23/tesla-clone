@@ -4,8 +4,8 @@ export default function Model ({ bgUrlImage, titleModel, SubTitleModel, stats })
   return (
     <Wrap bgImage={bgUrlImage}>
       <div>
-        <Title>{titleModel}</Title>
-        <SubTitle>{SubTitleModel}</SubTitle>
+        <Title titleModel={titleModel}>{titleModel}</Title>
+        <SubTitle titleModel={titleModel}>{SubTitleModel}</SubTitle>
       </div>
       <StatsContainer>
         {
@@ -37,7 +37,7 @@ const Wrap = styled.div`
 `
 
 const Title = styled.h1`
-  color: #171a20;
+  color: ${({ titleModel }) => titleModel === 'Model S' || titleModel === 'Model X' || titleModel === 'Solar Panels' ? '#171a20' : '#fff'};
   font-size: 45px;
   font-weight: 600;
   text-align: center;
@@ -46,6 +46,7 @@ const Title = styled.h1`
 `
 
 const SubTitle = styled.p`
+  color: ${({ titleModel }) => titleModel === 'Model S' || titleModel === 'Model X' || titleModel === 'Solar Panels' ? '#171a20' : '#fff'};
   font-size: 19px;
   line-height: 20px;
   text-align: center;

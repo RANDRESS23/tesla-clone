@@ -17,6 +17,21 @@ export const STATS_MODEL_S = [
   }
 ]
 
+export const STATS_MODEL_3 = [
+  {
+    labelStat: '0-60 mph',
+    valueStat: '3.1 s'
+  },
+  {
+    labelStat: 'Range (Epa est.)',
+    valueStat: '358 mi'
+  },
+  {
+    labelStat: 'Dual Motor',
+    valueStat: 'AWD'
+  }
+]
+
 export const STATS_MODEL_X = [
   {
     labelStat: 'Range (Epa est.)',
@@ -33,5 +48,20 @@ export const STATS_MODEL_X = [
   {
     labelStat: 'Peak Power',
     valueStat: '1,020 hp'
+  }
+]
+
+export const STATS_MODEL_Y = [
+  {
+    labelStat: 'Cargo Space',
+    valueStat: '76 cu ft'
+  },
+  {
+    labelStat: 'Range (Epa est.)',
+    valueStat: '330 mi'
+  },
+  {
+    labelStat: 'Dual Motor',
+    valueStat: 'AWD'
   }
 ]

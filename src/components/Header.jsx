@@ -1,10 +1,14 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close'
 import LanguageIcon from '@mui/icons-material/Language'
 import { BurgerNavItems } from '../services/BurgerNavItems'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
+const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
+
 export default function Header ({ showNavBurger, setShowNavBurger }) {
+  const [isColorHeaderDark, setIsColorHeaderDark] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -15,43 +19,85 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
     navigate('/')
   }
 
+  useEffect(() => {
+    if (PATHS_DARK.includes(location.pathname)) {
+      setIsColorHeaderDark(true)
+    } else setIsColorHeaderDark(false)
+  }, [location.pathname])
+
   return (
     <Container location={location}>
       <ImgContainer onClick={handleRedirectToHome}>
-        <Logo src='../../public/images/logo.svg' alt='logo' />
+        <Logo
+          src={isColorHeaderDark ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
+          alt='logo'
+        />
       </ImgContainer>
       <div>
         <MenuUl>
           <ItemList>
-            <LinkMenu to='/ModelS'>Model S</LinkMenu>
+            <LinkMenu
+              to='/ModelS'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Model S
+            </LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu to='/Model3'>Model 3</LinkMenu>
+            <LinkMenu
+              to='/Model3'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Model 3
+            </LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu to='/ModelX'>Model X</LinkMenu>
+            <LinkMenu
+              to='/ModelX'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Model X
+            </LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu to='/ModelY'>Model Y</LinkMenu>
+            <LinkMenu
+              to='/ModelY'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Model Y
+            </LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu to='/SolarRoof'>Solar Roof</LinkMenu>
+            <LinkMenu
+              to='/SolarRoof'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Solar Roof
+            </LinkMenu>
           </ItemList>
           <ItemList>
-            <LinkMenu to='/SolarPanels'>Solar Panels</LinkMenu>
+            <LinkMenu
+              to='/SolarPanels'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Solar Panels
+            </LinkMenu>
           </ItemList>
         </MenuUl>
       </div>
       <div>
         <MenuUl>
           <ItemList isView={false}>
-            <LinkMenu to='/Shop'>Shop</LinkMenu>
+            <LinkMenu
+              to='/Shop'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Shop
+            </LinkMenu>
           </ItemList>
           <ItemList isView={false}>
-            <LinkMenu to='/Account'>Account</LinkMenu>
+            <LinkMenu
+              to='/Account'
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+            >Account
+            </LinkMenu>
           </ItemList>
           <ItemList isView>
             <LinkMenu
+              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               to='#' onClick={(e) => {
                 e.preventDefault()
                 setShowNavBurger(true)
@@ -104,8 +150,8 @@ const ImgContainer = styled.div`
 `
 
 const Logo = styled.img`
+  width: 130px; 
   height: 15px;
-  width: 130px;
 `
 
 const MenuUl = styled.ul`
@@ -114,6 +160,7 @@ const MenuUl = styled.ul`
   justify-content: center;
   align-items: center;
 `
+
 const ItemList = styled.li`
   @media (max-width: 1115px) {
     display: ${props => props.isView ? 'block' : 'none'};
@@ -121,6 +168,7 @@ const ItemList = styled.li`
 `
 
 const LinkMenu = styled(Link)`
+  /* color: ${({ isColorHeaderDark }) => isColorHeaderDark ? '#393c41' : '#fff'}; */
   font-size: 15px;
   font-weight: 600;
   padding: 7px 16px;
