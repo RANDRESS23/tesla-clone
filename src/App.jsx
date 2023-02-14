@@ -7,6 +7,8 @@ import ModelS from './pages/ModelS'
 import Model3 from './pages/Model3'
 import ModelX from './pages/ModelX'
 import ModelY from './pages/ModelY'
+import SolarRoof from './pages/SolarRoof'
+import SolarPanels from './pages/SolarPanels'
 
 export default function App () {
   const [showNavBurger, setShowNavBurger] = useState(false)
@@ -24,6 +26,8 @@ export default function App () {
           <Route path='/Model3' element={<Model3 />} />
           <Route path='/ModelX' element={<ModelX />} />
           <Route path='/ModelY' element={<ModelY />} />
+          <Route path='/SolarRoof' element={<SolarRoof />} />
+          <Route path='/SolarPanels' element={<SolarPanels />} />
         </Routes>
       </BrowserRouter>
     </div>

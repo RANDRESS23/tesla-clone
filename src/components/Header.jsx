@@ -13,16 +13,14 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
   const location = useLocation()
 
   const handleRedirectToHome = () => {
-    if (location.pathname === '/') {
-      document.location.href = '#Model 3'
-    }
+    if (location.pathname === '/') document.location.href = '#Model 3'
+
     navigate('/')
   }
 
   useEffect(() => {
-    if (PATHS_DARK.includes(location.pathname)) {
-      setIsColorHeaderDark(true)
-    } else setIsColorHeaderDark(false)
+    if (PATHS_DARK.includes(location.pathname)) setIsColorHeaderDark(true)
+    else setIsColorHeaderDark(false)
   }, [location.pathname])
 
   return (

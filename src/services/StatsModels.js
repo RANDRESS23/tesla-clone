@@ -65,3 +65,33 @@ export const STATS_MODEL_Y = [
     valueStat: 'AWD'
   }
 ]
+
+export const STATS_SOLAR_ROOF = [
+  {
+    labelStat: 'Beautiful Solar',
+    valueStat: 'aaa'
+  },
+  {
+    labelStat: 'Tile Warranty',
+    valueStat: '25-Year'
+  },
+  {
+    labelStat: 'Outage Protection',
+    valueStat: '24/7'
+  }
+]
+
+export const STATS_SOLAR_PANELS = [
+  {
+    labelStat: 'Convert Sunlight to Energy',
+    valueStat: 'aaa'
+  },
+  {
+    labelStat: 'Guaranteed Lowest Price for Solar',
+    valueStat: 'aaaa'
+  },
+  {
+    labelStat: 'Energy Monitoring',
+    valueStat: '24/7'
+  }
+]

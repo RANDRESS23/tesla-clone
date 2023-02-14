@@ -25,7 +25,7 @@ export default function Section ({
       {title === 'Model 3'
         ? (
           <DownArrow
-            src='../../public/images/down-arrow.svg'
+            src='../../public/images/down-arrow-dark.svg'
             showNavBurger={showNavBurger}
             onClick={handleNextSection}
           />
