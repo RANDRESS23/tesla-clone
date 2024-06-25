@@ -9,27 +9,30 @@ import ModelX from './pages/ModelX'
 import ModelY from './pages/ModelY'
 import SolarRoof from './pages/SolarRoof'
 import SolarPanels from './pages/SolarPanels'
+import { ScrollbarContextProvider } from './Context/ScrollbarContext'
 
 export default function App () {
   const [showNavBurger, setShowNavBurger] = useState(false)
 
   return (
     <div className='App'>
-      <BrowserRouter>
-        <Header
-          showNavBurger={showNavBurger}
-          setShowNavBurger={setShowNavBurger}
-        />
-        <Routes>
-          <Route path='/' element={<Home showNavBurger={showNavBurger} />} />
-          <Route path='/ModelS' element={<ModelS />} />
-          <Route path='/Model3' element={<Model3 />} />
-          <Route path='/ModelX' element={<ModelX />} />
-          <Route path='/ModelY' element={<ModelY />} />
-          <Route path='/SolarRoof' element={<SolarRoof />} />
-          <Route path='/SolarPanels' element={<SolarPanels />} />
-        </Routes>
-      </BrowserRouter>
+      <ScrollbarContextProvider>
+        <BrowserRouter>
+          <Header
+            showNavBurger={showNavBurger}
+            setShowNavBurger={setShowNavBurger}
+          />
+          <Routes>
+            <Route path='/' element={<Home showNavBurger={showNavBurger} />} />
+            <Route path='/ModelS' element={<ModelS />} />
+            <Route path='/Model3' element={<Model3 />} />
+            <Route path='/ModelX' element={<ModelX />} />
+            <Route path='/ModelY' element={<ModelY />} />
+            <Route path='/SolarRoof' element={<SolarRoof />} />
+            <Route path='/SolarPanels' element={<SolarPanels />} />
+          </Routes>
+        </BrowserRouter>
+      </ScrollbarContextProvider>
     </div>
   )
 }

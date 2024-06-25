@@ -88,7 +88,7 @@ export const STATS_SOLAR_PANELS = [
   },
   {
     labelStat: 'Guaranteed Lowest Price for Solar',
-    valueStat: 'aaaa'
+    valueStat: '$'
   },
   {
     labelStat: 'Energy Monitoring',

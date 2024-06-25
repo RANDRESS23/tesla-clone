@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import LanguageIcon from '@mui/icons-material/Language'
 import { BurgerNavItems } from '../services/BurgerNavItems'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useHoversNavBar } from '../hooks/useHoversNavBar'
 
 const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
 
@@ -11,6 +12,23 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
   const [isColorHeaderDark, setIsColorHeaderDark] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
+  const {
+    showContentVehicles,
+    showContentEnergy,
+    showContentCharging,
+    showContentDiscover,
+    showContentShop,
+    hoverNavBarRef,
+    hoverLogoRef,
+    hoverSupportRef,
+    hoverLangRef,
+    hoverAccountRef,
+    hoverVehiclesRef,
+    hoverEnergyRef,
+    hoverChargingRef,
+    hoverDiscoverRef,
+    hoverShopRef
+  } = useHoversNavBar()
 
   const handleRedirectToHome = () => {
     if (location.pathname === '/') document.location.href = '#Model 3'
@@ -24,126 +42,203 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
   }, [location.pathname])
 
   return (
-    <Container location={location}>
-      <ImgContainer onClick={handleRedirectToHome}>
-        <Logo
-          src={isColorHeaderDark ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
-          alt='logo'
-        />
-      </ImgContainer>
-      <div>
-        <MenuUl>
-          <ItemList>
-            <LinkMenu
-              to='/ModelS'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Model S
-            </LinkMenu>
-          </ItemList>
-          <ItemList>
-            <LinkMenu
-              to='/Model3'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Model 3
-            </LinkMenu>
-          </ItemList>
-          <ItemList>
-            <LinkMenu
-              to='/ModelX'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Model X
-            </LinkMenu>
-          </ItemList>
-          <ItemList>
-            <LinkMenu
-              to='/ModelY'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Model Y
-            </LinkMenu>
-          </ItemList>
-          <ItemList>
-            <LinkMenu
-              to='/SolarRoof'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Solar Roof
-            </LinkMenu>
-          </ItemList>
-          <ItemList>
-            <LinkMenu
-              to='/SolarPanels'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Solar Panels
-            </LinkMenu>
-          </ItemList>
-        </MenuUl>
-      </div>
-      <div>
-        <MenuUl>
-          <ItemList isView={false}>
-            <LinkMenu
-              to='/Shop'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Shop
-            </LinkMenu>
-          </ItemList>
-          <ItemList isView={false}>
-            <LinkMenu
-              to='/Account'
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-            >Account
-            </LinkMenu>
-          </ItemList>
-          <ItemList isView>
-            <LinkMenu
-              style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-              to='#' onClick={(e) => {
-                e.preventDefault()
-                setShowNavBurger(true)
-              }}
-            >Menu
-            </LinkMenu>
-          </ItemList>
-        </MenuUl>
-      </div>
-      <BurgerNavContainer showNavBurger={showNavBurger}>
-        <BurgerNav showNavBurger={showNavBurger}>
-          <CloseContainer>
-            <CloseIconContainer onClick={() => setShowNavBurger(false)}>
-              <CloseIcon />
-            </CloseIconContainer>
-          </CloseContainer>
-          {
+    <div>
+      <Container ref={hoverNavBarRef} location={location}>
+        <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
+          <Logo
+            src={isColorHeaderDark ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
+            alt='logo'
+          />
+        </ImgContainer>
+        <div>
+          <MenuUl>
+            <ItemList>
+              <LinkMenu
+                to='/ModelS'
+                ref={hoverVehiclesRef}
+                isHover={showContentVehicles}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >Vehicles
+              </LinkMenu>
+            </ItemList>
+            <ItemList>
+              <LinkMenu
+                to='/Model3'
+                ref={hoverEnergyRef}
+                isHover={showContentEnergy}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >Energy
+              </LinkMenu>
+            </ItemList>
+            <ItemList>
+              <LinkMenu
+                to='/ModelX'
+                ref={hoverChargingRef}
+                isHover={showContentCharging}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >Charging
+              </LinkMenu>
+            </ItemList>
+            <ItemList>
+              <LinkMenu
+                to='/ModelY'
+                ref={hoverDiscoverRef}
+                isHover={showContentDiscover}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >Discover
+              </LinkMenu>
+            </ItemList>
+            <ItemList>
+              <LinkMenu
+                to='/SolarRoof'
+                ref={hoverShopRef}
+                isHover={showContentShop}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >Shop
+              </LinkMenu>
+            </ItemList>
+          </MenuUl>
+        </div>
+        <div>
+          <MenuUl>
+            <ItemList isView={false}>
+              <LinkMenuIcon
+                to={location.pathname}
+                ref={hoverSupportRef}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >
+                <IconHeader
+                  src='../../public/images/support.svg'
+                  alt='support'
+                />
+              </LinkMenuIcon>
+            </ItemList>
+            <ItemList isView={false}>
+              <LinkMenuIcon
+                to={location.pathname}
+                ref={hoverLangRef}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >
+                <IconHeader
+                  src='../../public/images/lang.svg'
+                  alt='lang'
+                />
+              </LinkMenuIcon>
+            </ItemList>
+            <ItemList isView>
+              {/* <LinkMenu
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                to='#' onClick={(e) => {
+                  e.preventDefault()
+                  setShowNavBurger(true)
+                }}
+              >Menu
+              </LinkMenu> */}
+              <LinkMenuIcon
+                to={location.pathname}
+                ref={hoverAccountRef}
+                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+              >
+                <IconHeader
+                  src='../../public/images/account.svg'
+                  alt='account'
+                />
+              </LinkMenuIcon>
+            </ItemList>
+          </MenuUl>
+        </div>
+        <BurgerNavContainer showNavBurger={showNavBurger}>
+          <BurgerNav showNavBurger={showNavBurger}>
+            <CloseContainer>
+              <CloseIconContainer onClick={() => setShowNavBurger(false)}>
+                <CloseIcon />
+              </CloseIconContainer>
+            </CloseContainer>
+            {
               BurgerNavItems.map(({ name, url }) => (
                 <BurgerItem key={name}>
                   <BurgerLink href={url}>{name}</BurgerLink>
                 </BurgerItem>
               ))
-              }
-          <LanguageContainer>
-            <LanguageIcon />
-            <LanguageTitleContainer>
-              <LanguageTitle>United States</LanguageTitle>
-              <LanguageSubTitle>English</LanguageSubTitle>
-            </LanguageTitleContainer>
-          </LanguageContainer>
-        </BurgerNav>
-      </BurgerNavContainer>
-    </Container>
+            }
+            <LanguageContainer>
+              <LanguageIcon />
+              <LanguageTitleContainer>
+                <LanguageTitle>United States</LanguageTitle>
+                <LanguageSubTitle>English</LanguageSubTitle>
+              </LanguageTitleContainer>
+            </LanguageContainer>
+          </BurgerNav>
+        </BurgerNavContainer>
+        <ContainerLink isHover={showContentVehicles}>
+          <ContainerLinkContent>
+            <div>vehicles</div>
+          </ContainerLinkContent>
+        </ContainerLink>
+        <ContainerLink isHover={showContentEnergy}>
+          <ContainerLinkContent>
+            <div>energy</div>
+          </ContainerLinkContent>
+        </ContainerLink>
+        <ContainerLink isHover={showContentCharging}>
+          <ContainerLinkContent>
+            <div>charging</div>
+          </ContainerLinkContent>
+        </ContainerLink>
+        <ContainerLink isHover={showContentDiscover}>
+          <ContainerLinkContent>
+            <div>discover</div>
+          </ContainerLinkContent>
+        </ContainerLink>
+        <ContainerLink isHover={showContentShop}>
+          <ContainerLinkContent>
+            <div>shop</div>
+          </ContainerLinkContent>
+        </ContainerLink>
+      </Container>
+    </div>
   )
 }
 
+const ContainerLink = styled.div`
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  max-height: 90vh;
+  min-height: 40vh;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+  background-color: #fff;
+  transform: ${props => props.isHover ? 'translateY(0%)' : 'translateY(-150%)'};
+  opacity: ${props => props.isHover ? '100%' : '50%'};
+  transition: transform .6s ease;
+`
+
+const ContainerLinkContent = styled.div`
+  background-color: '#5fe099';
+  transition: .2s ease all;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`
+
 const Container = styled.div`
+  /* background-color: ${({ isHover }) => isHover && '#fff'}; */
+  transition: .3s ease all;
   width: 100%;
   min-height: 60px;
   position: ${props => props.location.pathname === '/' ? 'fixed' : 'absolute'};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 50px;
+  z-index: 100;
 `
 
 const ImgContainer = styled.div`
-  padding-left: 28px;
+  position: relative;
+  z-index: 200;
   cursor: pointer;
 `
 
@@ -152,11 +247,20 @@ const Logo = styled.img`
   height: 15px;
 `
 
+const IconHeader = styled.img`
+  width: 24px;
+  height: 24px;
+  margin: 0px 2px;
+`
+
 const MenuUl = styled.ul`
+  position: relative;
+  z-index: 200;
   list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2px;
 `
 
 const ItemList = styled.li`
@@ -167,6 +271,7 @@ const ItemList = styled.li`
 
 const LinkMenu = styled(Link)`
   /* color: ${({ isColorHeaderDark }) => isColorHeaderDark ? '#393c41' : '#fff'}; */
+  background-color: ${({ isHover }) => isHover && 'rgba(0, 0, 0, 0.05)'};
   font-size: 15px;
   font-weight: 600;
   padding: 7px 16px;
@@ -175,7 +280,25 @@ const LinkMenu = styled(Link)`
   transition: .3s ease all;
 
   :hover {
-    background-color: #d7e4ee;
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(16px);
+  }
+`
+
+const LinkMenuIcon = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 3px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: .3s ease all;
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(16px);
   }
 `
 

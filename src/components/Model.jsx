@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 const TITLES_DARK = ['Model S', 'Model X', 'Solar for Existing Roofs']
 const TITLES_INCLUDES_DOWN_ARROW = ['Solar Roof', 'Solar for Existing Roofs']
 
 export default function Model ({ bgUrlImage, titleModel, SubTitleModel, stats }) {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const handleNextSection = () => {
-    document.location.href = '#Model Y'
-    navigate('/')
+    // document.location.href = '#'
+    // navigate('/')
   }
 
   return (
