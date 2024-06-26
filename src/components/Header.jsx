@@ -5,6 +5,7 @@ import LanguageIcon from '@mui/icons-material/Language'
 import { BurgerNavItems } from '../services/BurgerNavItems'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useHoversNavBar } from '../hooks/useHoversNavBar'
+import { VehiclesLinkContent } from './LinksContents/VehiclesLinkContent'
 
 const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
 
@@ -18,16 +19,20 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
     showContentCharging,
     showContentDiscover,
     showContentShop,
-    hoverNavBarRef,
     hoverLogoRef,
     hoverSupportRef,
     hoverLangRef,
     hoverAccountRef,
     hoverVehiclesRef,
+    hoverVehiclesContentRef,
     hoverEnergyRef,
+    hoverEnergyContentRef,
     hoverChargingRef,
+    hoverChargingContentRef,
     hoverDiscoverRef,
-    hoverShopRef
+    hoverDiscoverContentRef,
+    hoverShopRef,
+    hoverShopContentRef
   } = useHoversNavBar()
 
   const handleRedirectToHome = () => {
@@ -43,7 +48,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
 
   return (
     <div>
-      <Container ref={hoverNavBarRef} location={location}>
+      <Container location={location}>
         <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
           <Logo
             src={isColorHeaderDark ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
@@ -56,7 +61,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenu
                 to='/ModelS'
                 ref={hoverVehiclesRef}
-                isHover={showContentVehicles}
+                ishover={showContentVehicles}
                 style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >Vehicles
               </LinkMenu>
@@ -65,7 +70,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenu
                 to='/Model3'
                 ref={hoverEnergyRef}
-                isHover={showContentEnergy}
+                ishover={showContentEnergy}
                 style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >Energy
               </LinkMenu>
@@ -74,7 +79,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenu
                 to='/ModelX'
                 ref={hoverChargingRef}
-                isHover={showContentCharging}
+                ishover={showContentCharging}
                 style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >Charging
               </LinkMenu>
@@ -83,7 +88,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenu
                 to='/ModelY'
                 ref={hoverDiscoverRef}
-                isHover={showContentDiscover}
+                ishover={showContentDiscover}
                 style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >Discover
               </LinkMenu>
@@ -92,7 +97,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenu
                 to='/SolarRoof'
                 ref={hoverShopRef}
-                isHover={showContentShop}
+                ishover={showContentShop}
                 style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >Shop
               </LinkMenu>
@@ -170,28 +175,28 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
             </LanguageContainer>
           </BurgerNav>
         </BurgerNavContainer>
-        <ContainerLink isHover={showContentVehicles}>
-          <ContainerLinkContent>
-            <div>vehicles</div>
+        <ContainerLink ishover={showContentVehicles}>
+          <ContainerLinkContent ref={hoverVehiclesContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
+            <VehiclesLinkContent />
           </ContainerLinkContent>
         </ContainerLink>
-        <ContainerLink isHover={showContentEnergy}>
-          <ContainerLinkContent>
+        <ContainerLink ishover={showContentEnergy}>
+          <ContainerLinkContent ref={hoverEnergyContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
             <div>energy</div>
           </ContainerLinkContent>
         </ContainerLink>
-        <ContainerLink isHover={showContentCharging}>
-          <ContainerLinkContent>
+        <ContainerLink ishover={showContentCharging}>
+          <ContainerLinkContent ref={hoverChargingContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
             <div>charging</div>
           </ContainerLinkContent>
         </ContainerLink>
-        <ContainerLink isHover={showContentDiscover}>
-          <ContainerLinkContent>
+        <ContainerLink ishover={showContentDiscover}>
+          <ContainerLinkContent ref={hoverDiscoverContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
             <div>discover</div>
           </ContainerLinkContent>
         </ContainerLink>
-        <ContainerLink isHover={showContentShop}>
-          <ContainerLinkContent>
+        <ContainerLink ishover={showContentShop}>
+          <ContainerLinkContent ref={hoverShopContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
             <div>shop</div>
           </ContainerLinkContent>
         </ContainerLink>
@@ -202,29 +207,31 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
 
 const ContainerLink = styled.div`
   position: fixed;
-  z-index: 100;
-  width: 100vw;
-  max-height: 90vh;
-  min-height: 40vh;
   top: 0;
   left: 0;
-  padding-top: 60px;
-  background-color: #fff;
-  transform: ${props => props.isHover ? 'translateY(0%)' : 'translateY(-150%)'};
-  opacity: ${props => props.isHover ? '100%' : '50%'};
-  transition: transform .6s ease;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(23, 26, 32, 0.35);
+  backdrop-filter: blur(4px);
+  opacity: ${props => props.ishover ? '100%' : '80%'};
+  transition: .3s ease all;
+  visibility: ${props => props.ishover ? 'visible' : 'hidden'};
 `
 
 const ContainerLinkContent = styled.div`
-  background-color: '#5fe099';
   transition: .2s ease all;
   width: 100%;
-  height: 100%;
+  background-color: #fff;
+  transform: ${props => props.ishover ? 'translateY(0%)' : 'translateY(-150%)'};
+  transition: transform .6s ease;
+  padding: 120px 170px 10px 170px;
+  max-height: 90vh;
+  min-height: 40vh;
   overflow-y: auto;
 `
 
 const Container = styled.div`
-  /* background-color: ${({ isHover }) => isHover && '#fff'}; */
   transition: .3s ease all;
   width: 100%;
   min-height: 60px;
@@ -260,7 +267,6 @@ const MenuUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2px;
 `
 
 const ItemList = styled.li`
@@ -271,7 +277,7 @@ const ItemList = styled.li`
 
 const LinkMenu = styled(Link)`
   /* color: ${({ isColorHeaderDark }) => isColorHeaderDark ? '#393c41' : '#fff'}; */
-  background-color: ${({ isHover }) => isHover && 'rgba(0, 0, 0, 0.05)'};
+  background-color: ${({ ishover }) => ishover && 'rgba(0, 0, 0, 0.05)'};
   font-size: 15px;
   font-weight: 600;
   padding: 7px 16px;
@@ -295,6 +301,7 @@ const LinkMenuIcon = styled(Link)`
   border-radius: 4px;
   text-decoration: none;
   transition: .3s ease all;
+  margin: 0px 2px;
 
   :hover {
     background-color: rgba(0, 0, 0, 0.05);

@@ -9,8 +9,6 @@ export const useHoversNavBar = () => {
   const [showContentDiscover, setShowContentDiscover] = useState(false)
   const [showContentShop, setShowContentShop] = useState(false)
 
-  const hoverNavBarRef = useRef(null)
-  const isHoverNavBar = useHover(hoverNavBarRef)
   const hoverLogoRef = useRef(null)
   const isHoverLogo = useHover(hoverLogoRef)
   const hoverSupportRef = useRef(null)
@@ -22,14 +20,28 @@ export const useHoversNavBar = () => {
 
   const hoverVehiclesRef = useRef(null)
   const isHoverVehicles = useHover(hoverVehiclesRef)
+  const hoverVehiclesContentRef = useRef(null)
+  const isHoverVehiclesContent = useHover(hoverVehiclesContentRef)
+
   const hoverEnergyRef = useRef(null)
   const isHoverEnergy = useHover(hoverEnergyRef)
+  const hoverEnergyContentRef = useRef(null)
+  const isHoverEnergyContent = useHover(hoverEnergyContentRef)
+
   const hoverChargingRef = useRef(null)
   const isHoverCharging = useHover(hoverChargingRef)
+  const hoverChargingContentRef = useRef(null)
+  const isHoverChargingContent = useHover(hoverChargingContentRef)
+
   const hoverDiscoverRef = useRef(null)
   const isHoverDiscover = useHover(hoverDiscoverRef)
+  const hoverDiscoverContentRef = useRef(null)
+  const isHoverDiscoverContent = useHover(hoverDiscoverContentRef)
+
   const hoverShopRef = useRef(null)
   const isHoverShop = useHover(hoverShopRef)
+  const hoverShopContentRef = useRef(null)
+  const isHoverShopContent = useHover(hoverShopContentRef)
 
   const { setScrollbarHidden } = useContext(ScrollbarContext)
 
@@ -53,11 +65,11 @@ export const useHoversNavBar = () => {
 
       setShowContentVehicles(true)
       setScrollbarHidden(true)
-    } else if ((!isHoverVehicles && !isHoverNavBar) && showContentVehicles) {
+    } else if ((!isHoverVehicles && !isHoverVehiclesContent) && showContentVehicles) {
       setShowContentVehicles(false)
       setScrollbarHidden(false)
     }
-  }, [isHoverVehicles, isHoverNavBar])
+  }, [isHoverVehicles, isHoverVehiclesContent])
 
   useEffect(() => {
     if (isHoverEnergy && !showContentEnergy) {
@@ -65,11 +77,11 @@ export const useHoversNavBar = () => {
 
       setShowContentEnergy(true)
       setScrollbarHidden(true)
-    } else if ((!isHoverEnergy && !isHoverNavBar) && showContentEnergy) {
+    } else if ((!isHoverEnergy && !isHoverEnergyContent) && showContentEnergy) {
       setShowContentEnergy(false)
       setScrollbarHidden(false)
     }
-  }, [isHoverEnergy, isHoverNavBar])
+  }, [isHoverEnergy, isHoverEnergyContent])
 
   useEffect(() => {
     if (isHoverCharging && !showContentCharging) {
@@ -77,11 +89,11 @@ export const useHoversNavBar = () => {
 
       setShowContentCharging(true)
       setScrollbarHidden(true)
-    } else if ((!isHoverCharging && !isHoverNavBar) && showContentCharging) {
+    } else if ((!isHoverCharging && !isHoverChargingContent) && showContentCharging) {
       setShowContentCharging(false)
       setScrollbarHidden(false)
     }
-  }, [isHoverCharging, isHoverNavBar])
+  }, [isHoverCharging, isHoverChargingContent])
 
   useEffect(() => {
     if (isHoverDiscover && !showContentDiscover) {
@@ -89,11 +101,11 @@ export const useHoversNavBar = () => {
 
       setShowContentDiscover(true)
       setScrollbarHidden(true)
-    } else if ((!isHoverDiscover && !isHoverNavBar) && showContentDiscover) {
+    } else if ((!isHoverDiscover && !isHoverDiscoverContent) && showContentDiscover) {
       setShowContentDiscover(false)
       setScrollbarHidden(false)
     }
-  }, [isHoverDiscover, isHoverNavBar])
+  }, [isHoverDiscover, isHoverDiscoverContent])
 
   useEffect(() => {
     if (isHoverShop && !showContentShop) {
@@ -101,11 +113,11 @@ export const useHoversNavBar = () => {
 
       setShowContentShop(true)
       setScrollbarHidden(true)
-    } else if ((!isHoverShop && !isHoverNavBar) && showContentShop) {
+    } else if ((!isHoverShop && !isHoverShopContent) && showContentShop) {
       setShowContentShop(false)
       setScrollbarHidden(false)
     }
-  }, [isHoverShop, isHoverNavBar])
+  }, [isHoverShop, isHoverShopContent])
 
   return {
     showContentVehicles,
@@ -113,15 +125,19 @@ export const useHoversNavBar = () => {
     showContentCharging,
     showContentDiscover,
     showContentShop,
-    hoverNavBarRef,
     hoverLogoRef,
     hoverSupportRef,
     hoverLangRef,
     hoverAccountRef,
     hoverVehiclesRef,
+    hoverVehiclesContentRef,
     hoverEnergyRef,
+    hoverEnergyContentRef,
     hoverChargingRef,
+    hoverChargingContentRef,
     hoverDiscoverRef,
-    hoverShopRef
+    hoverDiscoverContentRef,
+    hoverShopRef,
+    hoverShopContentRef
   }
 }
