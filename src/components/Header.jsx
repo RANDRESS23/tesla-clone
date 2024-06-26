@@ -6,6 +6,7 @@ import { BurgerNavItems } from '../services/BurgerNavItems'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useHoversNavBar } from '../hooks/useHoversNavBar'
 import { ProductsContent } from './LinksContents/ProductsContent'
+import { DiscoverContent } from './LinksContents/DiscoverContent'
 
 const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
 
@@ -269,7 +270,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
         </ContainerLink>
         <ContainerLink ishover={showContentDiscover}>
           <ContainerLinkContent ref={hoverDiscoverContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
-            <div>discover</div>
+            <DiscoverContent />
           </ContainerLinkContent>
         </ContainerLink>
         <ContainerLink ishover={showContentShop}>
