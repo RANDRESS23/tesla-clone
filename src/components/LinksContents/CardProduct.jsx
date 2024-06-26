@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const CardVehicle = ({ url, srcCar, title }) => {
+export const CardProduct = ({ url, srcCar, title }) => {
   return (
     <Card>
       <ImageContainer to={url}>
@@ -17,7 +17,9 @@ export const CardVehicle = ({ url, srcCar, title }) => {
             : (
               <>
                 <LinkOption to={url}>Learn</LinkOption>
-                <LinkOption to={url}>Order</LinkOption>
+                {
+                  title !== 'Megapack' && <LinkOption to={url}>Order</LinkOption>
+                }
               </>
               )
         }

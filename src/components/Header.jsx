@@ -5,7 +5,7 @@ import LanguageIcon from '@mui/icons-material/Language'
 import { BurgerNavItems } from '../services/BurgerNavItems'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useHoversNavBar } from '../hooks/useHoversNavBar'
-import { VehiclesLinkContent } from './LinksContents/VehiclesLinkContent'
+import { ProductsContent } from './LinksContents/ProductsContent'
 
 const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
 
@@ -177,12 +177,70 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
         </BurgerNavContainer>
         <ContainerLink ishover={showContentVehicles}>
           <ContainerLinkContent ref={hoverVehiclesContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
-            <VehiclesLinkContent />
+            <ProductsContent
+              products={[
+                {
+                  url: '/ModelS',
+                  srcCar: '../../../public/images/vehicle-model-s.avif',
+                  title: 'Model S'
+                },
+                {
+                  url: '/Model3',
+                  srcCar: '../../../public/images/vehicle-model-3.avif',
+                  title: 'Model 3'
+                },
+                {
+                  url: '/ModelX',
+                  srcCar: '../../../public/images/vehicle-model-x.avif',
+                  title: 'Model X'
+                },
+                {
+                  url: '/ModelY',
+                  srcCar: '../../../public/images/vehicle-model-y.avif',
+                  title: 'Model Y'
+                },
+                {
+                  url: '/Cybertruck',
+                  srcCar: '../../../public/images/vehicle-cybertruck.avif',
+                  title: 'Cybertruck'
+                },
+                {
+                  url: '/Choose',
+                  srcCar: '../../../public/images/vehicles-choose.avif',
+                  title: 'Heelp Me Choose'
+                }
+              ]}
+              linksAside={['Inventory', 'Used Cards', 'Demo Drive', 'Trade-in', 'Compare', 'Help Me Charge', 'Fleet', 'Semi', 'Roadster']}
+            />
           </ContainerLinkContent>
         </ContainerLink>
         <ContainerLink ishover={showContentEnergy}>
           <ContainerLinkContent ref={hoverEnergyContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
-            <div>energy</div>
+            <ProductsContent
+              products={[
+                {
+                  url: '/solarpanels',
+                  srcCar: '../../../public/images/energy-solar-panels.avif',
+                  title: 'Solar Panels'
+                },
+                {
+                  url: '/solarroof',
+                  srcCar: '../../../public/images/energy-solar-roof.avif',
+                  title: 'Solar Roof'
+                },
+                {
+                  url: '/powerwall',
+                  srcCar: '../../../public/images/energy-powerwall.avif',
+                  title: 'Powerwall'
+                },
+                {
+                  url: '/megaapack',
+                  srcCar: '../../../public/images/energy-megapack.avif',
+                  title: 'Megapack'
+                }
+              ]}
+              linksAside={['Schedule a Consultation', 'Why Solar', 'Incentives', 'Support', 'Partner with Tesla', 'Commercial', 'Utilities']}
+            />
           </ContainerLinkContent>
         </ContainerLink>
         <ContainerLink ishover={showContentCharging}>
@@ -225,7 +283,7 @@ const ContainerLinkContent = styled.div`
   background-color: #fff;
   transform: ${props => props.ishover ? 'translateY(0%)' : 'translateY(-150%)'};
   transition: transform .6s ease;
-  padding: 120px 170px 50px 170px;
+  padding: 120px 170px 60px 170px;
   max-height: 90vh;
   min-height: 40vh;
   overflow-y: auto;
