@@ -10,7 +10,7 @@ export default function SolarRoof () {
   return (
     <div>
       <Model
-        bgUrlImage='solar-roof-second.jpg'
+        bgUrlImage='solar-roof-second.webp'
         titleModel='Solar Roof'
         SubTitleModel='Schedule a Virtual Consultation'
         stats={STATS_SOLAR_ROOF}

@@ -10,7 +10,7 @@ export default function SolarPanels () {
   return (
     <div>
       <Model
-        bgUrlImage='solar-panel-second.jpg'
+        bgUrlImage='solar-panel-second.webp'
         titleModel='Solar for Existing Roofs'
         SubTitleModel='Schedule a Virtual Consultation'
         stats={STATS_SOLAR_PANELS}

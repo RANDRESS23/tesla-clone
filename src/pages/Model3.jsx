@@ -10,7 +10,7 @@ export default function Model3 () {
   return (
     <div>
       <Model
-        bgUrlImage='model-3-second.jpg'
+        bgUrlImage='model-3-second.webp'
         titleModel='Model 3'
         SubTitleModel='Schedule a Demo Drive'
         stats={STATS_MODEL_3}

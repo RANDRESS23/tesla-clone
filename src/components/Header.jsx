@@ -225,7 +225,7 @@ const ContainerLinkContent = styled.div`
   background-color: #fff;
   transform: ${props => props.ishover ? 'translateY(0%)' : 'translateY(-150%)'};
   transition: transform .6s ease;
-  padding: 120px 170px 10px 170px;
+  padding: 120px 170px 50px 170px;
   max-height: 90vh;
   min-height: 40vh;
   overflow-y: auto;

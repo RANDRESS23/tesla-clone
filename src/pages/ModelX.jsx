@@ -13,7 +13,7 @@ export default function ModelX () {
   return (
     <div>
       <Model
-        bgUrlImage='model-x.jpg'
+        bgUrlImage='model-x.webp'
         titleModel='Model X'
         SubTitleModel='Plaid'
         stats={STATS_MODEL_X}
