@@ -30,15 +30,21 @@ export const ProductsContent = ({ products, linksAside }) => {
 
 const Container = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 0 60px 0 60px;
   gap: 50px;
+  width: 90%;
+  margin: auto;
+  padding-top: 120px;
+  padding-bottom: 60px;
 `
 
 const ContainerCars = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 50px;
-  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  place-items: center;
+  gap: 20px;
+  width: 70%;
 `
 
 const LinksContainer = styled.div`
@@ -46,7 +52,7 @@ const LinksContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
-  width: 25%;
+  /* width: 25%; */
   border-left: 1px solid #e0e0e0;
   padding-left: 50px;
   padding-top: 10px;

@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+const TITLES_WITHOUT_ORDER = ['Megapack', 'Charging', 'Home Charging', 'Supercharging']
+
 export const CardProduct = ({ url, srcCar, title }) => {
   return (
     <Card>
@@ -18,7 +20,13 @@ export const CardProduct = ({ url, srcCar, title }) => {
               <>
                 <LinkOption to={url}>Learn</LinkOption>
                 {
-                  title !== 'Megapack' && <LinkOption to={url}>Order</LinkOption>
+                  !TITLES_WITHOUT_ORDER.includes(title) && <LinkOption to={url}>Order</LinkOption>
+                }
+                {
+                  title === 'Home Charging' && <LinkOption to={url}>Shop</LinkOption>
+                }
+                {
+                  title === 'Supercharging' && <LinkOption to={url}>Find</LinkOption>
                 }
               </>
               )

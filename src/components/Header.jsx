@@ -245,7 +245,26 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
         </ContainerLink>
         <ContainerLink ishover={showContentCharging}>
           <ContainerLinkContent ref={hoverChargingContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
-            <div>charging</div>
+            <ProductsContent
+              products={[
+                {
+                  url: '/charging',
+                  srcCar: '../../../public/images/charging-charging.avif',
+                  title: 'Charging'
+                },
+                {
+                  url: '/home-charging',
+                  srcCar: '../../../public/images/charging-home-charging.avif',
+                  title: 'Home Charging'
+                },
+                {
+                  url: '/supercharger',
+                  srcCar: '../../../public/images/charging-supercharging.avif',
+                  title: 'Supercharging'
+                }
+              ]}
+              linksAside={['Help Me Charge', 'Charging Calculator', 'Charging With NACS', 'Supercharger Voting', 'Host a Supercharger', 'Commercial Charging', 'Host Wall Connectors']}
+            />
           </ContainerLinkContent>
         </ContainerLink>
         <ContainerLink ishover={showContentDiscover}>
@@ -272,7 +291,7 @@ const ContainerLink = styled.div`
   height: 100vh;
   background-color: rgba(23, 26, 32, 0.35);
   backdrop-filter: blur(4px);
-  opacity: ${props => props.ishover ? '100%' : '80%'};
+  opacity: ${props => props.ishover ? '100%' : '0%'};
   transition: .3s ease all;
   visibility: ${props => props.ishover ? 'visible' : 'hidden'};
 `
@@ -283,7 +302,6 @@ const ContainerLinkContent = styled.div`
   background-color: #fff;
   transform: ${props => props.ishover ? 'translateY(0%)' : 'translateY(-150%)'};
   transition: transform .6s ease;
-  padding: 120px 170px 60px 170px;
   max-height: 90vh;
   min-height: 40vh;
   overflow-y: auto;
