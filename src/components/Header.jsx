@@ -7,6 +7,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useHoversNavBar } from '../hooks/useHoversNavBar'
 import { ProductsContent } from './LinksContents/ProductsContent'
 import { DiscoverContent } from './LinksContents/DiscoverContent'
+import { ShopContent } from './LinksContents/ShopContent'
 
 const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
 
@@ -275,7 +276,30 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
         </ContainerLink>
         <ContainerLink ishover={showContentShop}>
           <ContainerLinkContent ref={hoverShopContentRef} ishover={showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop}>
-            <div>shop</div>
+            <ShopContent
+              products={[
+                {
+                  url: '/charging',
+                  srcProduct: '../../../public/images/charging-home-charging.avif',
+                  title: 'Charging'
+                },
+                {
+                  url: '/vehicle-accessories',
+                  srcProduct: '../../../public/images/shop-vehicle-accessories.avif',
+                  title: 'Vehicle Accessories'
+                },
+                {
+                  url: '/apparel',
+                  srcProduct: '../../../public/images/shop-apparel.avif',
+                  title: 'Apparel'
+                },
+                {
+                  url: '/lifestyle',
+                  srcProduct: '../../../public/images/shop-lifestyle.avif',
+                  title: 'Lifestyle'
+                }
+              ]}
+            />
           </ContainerLinkContent>
         </ContainerLink>
       </Container>
