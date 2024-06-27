@@ -377,7 +377,6 @@ const ItemList = styled.li`
 `
 
 const LinkMenu = styled(Link)`
-  /* color: ${({ isColorHeaderDark }) => isColorHeaderDark ? '#393c41' : '#fff'}; */
   background-color: ${({ ishover }) => ishover && 'rgba(0, 0, 0, 0.05)'};
   font-size: 15px;
   font-weight: 600;

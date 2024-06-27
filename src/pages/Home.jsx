@@ -18,6 +18,7 @@ export default function Home ({ showNavBurger }) {
           const {
             title,
             subtitle,
+            subscript,
             txtLeftButton,
             txtRightButton,
             backgroundImg
@@ -28,6 +29,7 @@ export default function Home ({ showNavBurger }) {
               key={title}
               title={title}
               subtitle={subtitle}
+              subscript={subscript}
               txtLeftButton={txtLeftButton}
               txtRightButton={txtRightButton}
               backgroundImg={backgroundImg}
