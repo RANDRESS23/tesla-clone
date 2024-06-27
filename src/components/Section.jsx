@@ -19,7 +19,7 @@ export default function Section ({
       {
         title === 'Cybertruck'
           ? (
-            <img src='cybertruck-title.svg' alt='Cybertruck' />
+            <TitleCybertruck src='../../public/images/cybertruck-title.webp' alt='Cybertruck' />
             )
           : (
             <TitleContent>
@@ -51,9 +51,25 @@ export default function Section ({
             )
       }
       <ButtonGroup>
-        <LeftButton showNavBurger={showNavBurger}>{txtLeftButton}</LeftButton>
-        {txtRightButton !== '' &&
-          <RightButton showNavBurger={showNavBurger}>{txtRightButton}</RightButton>}
+        {
+          title === 'Cybertruck'
+            ? (
+              <>
+                <LeftButtonCybertruck showNavBurger={showNavBurger}>{txtLeftButton}</LeftButtonCybertruck>
+                {
+                    txtRightButton !== '' && <RightButtonCybertruck showNavBurger={showNavBurger}>{txtRightButton}</RightButtonCybertruck>
+                  }
+              </>
+              )
+            : (
+              <>
+                <LeftButton showNavBurger={showNavBurger}>{txtLeftButton}</LeftButton>
+                {
+                    txtRightButton !== '' && <RightButton showNavBurger={showNavBurger}>{txtRightButton}</RightButton>
+                  }
+              </>
+              )
+        }
       </ButtonGroup>
       {title === 'Model 3'
         ? (
@@ -72,6 +88,7 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -79,6 +96,11 @@ const Wrap = styled.div`
   background-repeat: no-repeat;
   background-image: ${props => `url('../../public/images/${props.bgImage}')`};
   scroll-snap-align: start;
+`
+
+const TitleCybertruck = styled.img`
+  width: 450px;
+  padding-top: 80px;
 `
 
 const TitleContent = styled.div`
@@ -190,6 +212,35 @@ const RightButton = styled(LeftButton)`
   :hover {
     background-color: #393c41;
   }
+`
+
+const LeftButtonCybertruck = styled.a`
+  width: 265px;
+  padding: 11px 24px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  color: #393c41;
+  background-color: rgba(17, 17, 17, 1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: .3s ease all;
+  color: #a2a3a5;
+  border: 1px solid #393c41;
+  border-top: 3px solid #8e8e8e;
+
+  :hover {
+    background-color: rgba(23, 26, 32, 1);
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+`
+
+const RightButtonCybertruck = styled(LeftButtonCybertruck)`
+  border: 1px solid #393c41;
 `
 
 const DownArrow = styled.img`
