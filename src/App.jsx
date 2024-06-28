@@ -24,12 +24,12 @@ export default function App () {
           />
           <Routes>
             <Route path='/' element={<Home showNavBurger={showNavBurger} />} />
-            <Route path='/ModelS' element={<ModelS />} />
-            <Route path='/Model3' element={<Model3 />} />
-            <Route path='/ModelX' element={<ModelX />} />
-            <Route path='/ModelY' element={<ModelY />} />
-            <Route path='/SolarRoof' element={<SolarRoof />} />
-            <Route path='/SolarPanels' element={<SolarPanels />} />
+            <Route path='/models' element={<ModelS />} />
+            <Route path='/model3' element={<Model3 />} />
+            <Route path='/modelx' element={<ModelX />} />
+            <Route path='/modely' element={<ModelY />} />
+            <Route path='/solar-roof' element={<SolarRoof />} />
+            <Route path='/solar-panels' element={<SolarPanels />} />
           </Routes>
         </BrowserRouter>
       </ScrollbarContextProvider>

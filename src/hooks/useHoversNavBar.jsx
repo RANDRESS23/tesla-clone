@@ -51,6 +51,7 @@ export const useHoversNavBar = () => {
     setShowContentDiscover(false)
     setShowContentShop(false)
     setShowContentVehicles(false)
+    setScrollbarHidden(false)
   }
 
   useEffect(() => {

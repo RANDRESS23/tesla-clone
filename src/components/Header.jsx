@@ -9,7 +9,7 @@ import { ProductsContent } from './LinksContents/ProductsContent'
 import { DiscoverContent } from './LinksContents/DiscoverContent'
 import { ShopContent } from './LinksContents/ShopContent'
 
-const PATHS_DARK = ['/', '/ModelS', '/ModelX', '/SolarPanels']
+const PATHS_DARK = ['/', '/models', '/modelx', '/solar-panels']
 
 export default function Header ({ showNavBurger, setShowNavBurger }) {
   const [isColorHeaderDark, setIsColorHeaderDark] = useState(true)
@@ -50,10 +50,10 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
 
   return (
     <div>
-      <Container location={location}>
+      <Container>
         <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
           <Logo
-            src={isColorHeaderDark ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
+            src={(isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop) ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
             alt='logo'
           />
         </ImgContainer>
@@ -61,46 +61,51 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
           <MenuUl>
             <ItemList>
               <LinkMenu
-                to='/ModelS'
+                to='/'
                 ref={hoverVehiclesRef}
-                ishover={showContentVehicles}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                ishoverlink={showContentVehicles.toString()}
+                ishoverheader={(showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop).toString()}
+                iscolorheaderdark={isColorHeaderDark.toString()}
               >Vehicles
               </LinkMenu>
             </ItemList>
             <ItemList>
               <LinkMenu
-                to='/Model3'
+                to='/'
                 ref={hoverEnergyRef}
-                ishover={showContentEnergy}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                ishoverlink={showContentEnergy.toString()}
+                ishoverheader={(showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop).toString()}
+                iscolorheaderdark={isColorHeaderDark.toString()}
               >Energy
               </LinkMenu>
             </ItemList>
             <ItemList>
               <LinkMenu
-                to='/ModelX'
+                to='/'
                 ref={hoverChargingRef}
-                ishover={showContentCharging}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                ishoverlink={showContentCharging.toString()}
+                ishoverheader={(showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop).toString()}
+                iscolorheaderdark={isColorHeaderDark.toString()}
               >Charging
               </LinkMenu>
             </ItemList>
             <ItemList>
               <LinkMenu
-                to='/ModelY'
+                to='/'
                 ref={hoverDiscoverRef}
-                ishover={showContentDiscover}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                ishoverlink={showContentDiscover.toString()}
+                ishoverheader={(showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop).toString()}
+                iscolorheaderdark={isColorHeaderDark.toString()}
               >Discover
               </LinkMenu>
             </ItemList>
             <ItemList>
               <LinkMenu
-                to='/SolarRoof'
+                to='/'
                 ref={hoverShopRef}
-                ishover={showContentShop}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
+                ishoverlink={showContentShop.toString()}
+                ishoverheader={(showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop).toString()}
+                iscolorheaderdark={isColorHeaderDark.toString()}
               >Shop
               </LinkMenu>
             </ItemList>
@@ -112,24 +117,44 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenuIcon
                 to={location.pathname}
                 ref={hoverSupportRef}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >
-                <IconHeader
-                  src='../../public/images/support.svg'
-                  alt='support'
-                />
+                {
+                  (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
+                    ? (
+                      <IconHeader
+                        src='../../public/images/support.svg'
+                        alt='support'
+                      />
+                      )
+                    : (
+                      <IconHeader
+                        src='../../public/images/support-light.svg'
+                        alt='support'
+                      />
+                      )
+                }
               </LinkMenuIcon>
             </ItemList>
             <ItemList isView={false}>
               <LinkMenuIcon
                 to={location.pathname}
                 ref={hoverLangRef}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >
-                <IconHeader
-                  src='../../public/images/lang.svg'
-                  alt='lang'
-                />
+                {
+                  (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
+                    ? (
+                      <IconHeader
+                        src='../../public/images/lang.svg'
+                        alt='lang'
+                      />
+                      )
+                    : (
+                      <IconHeader
+                        src='../../public/images/lang-light.svg'
+                        alt='lang'
+                      />
+                      )
+                }
               </LinkMenuIcon>
             </ItemList>
             <ItemList isView>
@@ -144,12 +169,22 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               <LinkMenuIcon
                 to={location.pathname}
                 ref={hoverAccountRef}
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
               >
-                <IconHeader
-                  src='../../public/images/account.svg'
-                  alt='account'
-                />
+                {
+                  (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
+                    ? (
+                      <IconHeader
+                        src='../../public/images/account.svg'
+                        alt='account'
+                      />
+                      )
+                    : (
+                      <IconHeader
+                        src='../../public/images/account-light.svg'
+                        alt='account'
+                      />
+                      )
+                }
               </LinkMenuIcon>
             </ItemList>
           </MenuUl>
@@ -182,32 +217,32 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
             <ProductsContent
               products={[
                 {
-                  url: '/ModelS',
+                  url: '/models',
                   srcCar: '../../../public/images/vehicle-model-s.avif',
                   title: 'Model S'
                 },
                 {
-                  url: '/Model3',
+                  url: '/model3',
                   srcCar: '../../../public/images/vehicle-model-3.avif',
                   title: 'Model 3'
                 },
                 {
-                  url: '/ModelX',
+                  url: '/modelx',
                   srcCar: '../../../public/images/vehicle-model-x.avif',
                   title: 'Model X'
                 },
                 {
-                  url: '/ModelY',
+                  url: '/modely',
                   srcCar: '../../../public/images/vehicle-model-y.avif',
                   title: 'Model Y'
                 },
                 {
-                  url: '/Cybertruck',
+                  url: '/cybertruck',
                   srcCar: '../../../public/images/vehicle-cybertruck.avif',
                   title: 'Cybertruck'
                 },
                 {
-                  url: '/Choose',
+                  url: '/choose',
                   srcCar: '../../../public/images/vehicles-choose.avif',
                   title: 'Heelp Me Choose'
                 }
@@ -308,7 +343,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
 }
 
 const ContainerLink = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
@@ -336,7 +371,7 @@ const Container = styled.div`
   transition: .3s ease all;
   width: 100%;
   min-height: 60px;
-  position: ${props => props.location.pathname === '/' ? 'fixed' : 'absolute'};
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -377,15 +412,17 @@ const ItemList = styled.li`
 `
 
 const LinkMenu = styled(Link)`
-  background-color: ${({ ishover }) => ishover && 'rgba(0, 0, 0, 0.05)'};
+  background-color: ${({ ishoverlink }) => ishoverlink === 'true' && 'rgba(0, 0, 0, 0.05)'};
+  color: ${({ iscolorheaderdark, ishoverheader }) => (iscolorheaderdark === 'true' || ishoverheader === 'true') ? '#393c41' : '#fff'};
   font-size: 15px;
   font-weight: 600;
   padding: 7px 16px;
   border-radius: 4px;
   text-decoration: none;
   transition: .3s ease all;
-
+  
   :hover {
+    color: ${({ ishoverheader }) => ishoverheader === 'true' && '#393c41'};
     background-color: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(16px);
   }
