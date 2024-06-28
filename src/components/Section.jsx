@@ -117,6 +117,10 @@ const Title = styled.h1`
   text-align: center;
   line-height: 48px;
   padding: 100px 24px 0px 24px;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `
 
 const SubTitle = styled.p`
@@ -129,6 +133,11 @@ const SubTitle = styled.p`
   text-align: center;
   padding: 7px 24px 10px;
   color: ${({ isTextWhite }) => isTextWhite ? '#fff' : '#2e3033'};
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    padding-top: 0;
+  }
 `
 
 const LinkSolarPanel = styled(Link)`
@@ -179,6 +188,7 @@ const ButtonGroup = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    width: 100%;
   }
 `
 

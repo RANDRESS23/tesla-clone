@@ -51,12 +51,16 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
   return (
     <div>
       <Container>
-        <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
-          <Logo
-            src={(isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop) ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
-            alt='logo'
-          />
-        </ImgContainer>
+        {
+          !showNavBurger && (
+            <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
+              <Logo
+                src={(isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop) ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
+                alt='logo'
+              />
+            </ImgContainer>
+          )
+        }
         <div>
           <MenuUl>
             <ItemList>
@@ -157,15 +161,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                 }
               </LinkMenuIcon>
             </ItemList>
-            <ItemList isView>
-              {/* <LinkMenu
-                style={isColorHeaderDark ? { color: '#393c41' } : { color: '#fff' }}
-                to='#' onClick={(e) => {
-                  e.preventDefault()
-                  setShowNavBurger(true)
-                }}
-              >Menu
-              </LinkMenu> */}
+            <ItemList isView={false}>
               <LinkMenuIcon
                 to={location.pathname}
                 ref={hoverAccountRef}
@@ -187,6 +183,21 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                 }
               </LinkMenuIcon>
             </ItemList>
+            {
+              !showNavBurger && (
+                <ItemList isView>
+                  <LinkMenu
+                    iscolorheaderdark={isColorHeaderDark.toString()}
+                    to='/'
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setShowNavBurger(true)
+                    }}
+                  >Menu
+                  </LinkMenu>
+                </ItemList>
+              )
+            }
           </MenuUl>
         </div>
         <BurgerNavContainer showNavBurger={showNavBurger}>
@@ -200,6 +211,9 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               BurgerNavItems.map(({ name, url }) => (
                 <BurgerItem key={name}>
                   <BurgerLink href={url}>{name}</BurgerLink>
+                  <RightArrow
+                    src='../../public/images/right-arrow.svg'
+                  />
                 </BurgerItem>
               ))
             }
@@ -209,6 +223,11 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                 <LanguageTitle>United States</LanguageTitle>
                 <LanguageSubTitle>English</LanguageSubTitle>
               </LanguageTitleContainer>
+              <RightArrowContainer>
+                <RightArrow2
+                  src='../../public/images/right-arrow.svg'
+                />
+              </RightArrowContainer>
             </LanguageContainer>
           </BurgerNav>
         </BurgerNavContainer>
@@ -256,12 +275,12 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
             <ProductsContent
               products={[
                 {
-                  url: '/solarpanels',
+                  url: '/solar-panels',
                   srcCar: '../../../public/images/energy-solar-panels.avif',
                   title: 'Solar Panels'
                 },
                 {
-                  url: '/solarroof',
+                  url: '/solar-roof',
                   srcCar: '../../../public/images/energy-solar-roof.avif',
                   title: 'Solar Roof'
                 },
@@ -377,6 +396,10 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 0 50px;
   z-index: 100;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `
 
 const ImgContainer = styled.div`
@@ -455,20 +478,21 @@ const BurgerNavContainer = styled.div`
   right: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(23, 26, 32, 0.35);
-  backdrop-filter: blur(4px);
+  background-color: #fff;
   transform: ${props => props.showNavBurger ? 'translateX(0%)' : 'translateX(100%)'};
   transition: transform .6s ease;
 `
 
 const BurgerNav = styled.ul`
-  width: 310px;
+  width: 100%;
   overflow-y: scroll;
   background-color: #fff;
   list-style: none;
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
 `
 
 const CloseContainer = styled.div`
@@ -479,17 +503,19 @@ const CloseContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px;
-  background-color: #fff;
+  padding: 20px 10px 40px 0px;
 `
 
 const CloseIconContainer = styled.div`
   padding: 8px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 4px;
   transition: .3s ease all;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :hover {
     background-color: #f2f2f2;
@@ -497,30 +523,11 @@ const CloseIconContainer = styled.div`
 `
 
 const BurgerItem = styled.li`
-  padding: 4px 30px 4px 30px;
-`
-
-const BurgerLink = styled.a`
-  font-size: 16px;
-  font-weight: 600;
-  padding: 7px 16px 7px 15px;
-  border-radius: 4px;
-  text-decoration: none;
+  padding: 15px 0px;
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   transition: .3s ease all;
-  
-  :hover {
-    background-color: #f2f2f2;
-  }
-`
-
-const LanguageContainer = styled.div`
-  display: flex;
-  margin: 4px 30px 4px 30px;
-  padding: 7px 16px 7px 15px;
-  transition: .3s ease all;
-  border-radius: 4px;
   cursor: pointer;
   
   :hover {
@@ -528,13 +535,57 @@ const LanguageContainer = styled.div`
   }
 `
 
+const BurgerLink = styled.span`
+  font-size: 18px;
+  font-weight: 700;
+  padding: 7px 16px 7px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+`
+
+const RightArrowContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+const RightArrow = styled.img`
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+`
+
+const RightArrow2 = styled.img`
+  width: 15px;
+  height: 15px;
+`
+
+const LanguageContainer = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 25px;
+  padding: 15px 15px;
+  transition: .3s ease all;
+  border-radius: 4px;
+  cursor: pointer;
+
+  :hover {
+    background-color: #f2f2f2;
+  }
+`
+
 const LanguageTitleContainer = styled.div`
   padding-left: 7px;
+  width: 100%;
 `
 
 const LanguageTitle = styled.p`
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
 `
 
 const LanguageSubTitle = styled.p`

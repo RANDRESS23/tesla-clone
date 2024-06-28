@@ -1,34 +1,10 @@
 export const BurgerNavItems = [
   {
-    name: 'Existing Inventory',
+    name: 'Vehicles',
     url: '#'
   },
   {
-    name: 'Used Inventory',
-    url: '#'
-  },
-  {
-    name: 'Trade-In',
-    url: '#'
-  },
-  {
-    name: 'Demo Drive',
-    url: '#'
-  },
-  {
-    name: 'Insurance',
-    url: '#'
-  },
-  {
-    name: 'Cybertruck',
-    url: '#'
-  },
-  {
-    name: 'Roadster',
-    url: '#'
-  },
-  {
-    name: 'Semi',
+    name: 'Energy',
     url: '#'
   },
   {
@@ -36,27 +12,15 @@ export const BurgerNavItems = [
     url: '#'
   },
   {
-    name: 'Powerwall',
+    name: 'Discover',
     url: '#'
   },
   {
-    name: 'Commercial Energy',
-    url: '#'
-  },
-  {
-    name: 'Utilities',
-    url: '#'
-  },
-  {
-    name: 'Find Us',
+    name: 'Shop',
     url: '#'
   },
   {
     name: 'Support',
-    url: '#'
-  },
-  {
-    name: 'Investor Relations',
     url: '#'
   }
 ]
