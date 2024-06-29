@@ -55,7 +55,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
           !showNavBurger && (
             <ImgContainer ref={hoverLogoRef} onClick={handleRedirectToHome}>
               <Logo
-                src={(isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop) ? '../../public/images/logo-dark.svg' : '../../public/images/logo-light.svg'}
+                src={(isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop) ? 'images/logo-dark.svg' : 'images/logo-light.svg'}
                 alt='logo'
               />
             </ImgContainer>
@@ -126,13 +126,13 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                   (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
                     ? (
                       <IconHeader
-                        src='../../public/images/support.svg'
+                        src='images/support.svg'
                         alt='support'
                       />
                       )
                     : (
                       <IconHeader
-                        src='../../public/images/support-light.svg'
+                        src='images/support-light.svg'
                         alt='support'
                       />
                       )
@@ -148,13 +148,13 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                   (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
                     ? (
                       <IconHeader
-                        src='../../public/images/lang.svg'
+                        src='images/lang.svg'
                         alt='lang'
                       />
                       )
                     : (
                       <IconHeader
-                        src='../../public/images/lang-light.svg'
+                        src='images/lang-light.svg'
                         alt='lang'
                       />
                       )
@@ -170,13 +170,13 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                   (isColorHeaderDark || showContentVehicles || showContentEnergy || showContentCharging || showContentDiscover || showContentShop)
                     ? (
                       <IconHeader
-                        src='../../public/images/account.svg'
+                        src='images/account.svg'
                         alt='account'
                       />
                       )
                     : (
                       <IconHeader
-                        src='../../public/images/account-light.svg'
+                        src='images/account-light.svg'
                         alt='account'
                       />
                       )
@@ -212,7 +212,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
                 <BurgerItem key={name}>
                   <BurgerLink href={url}>{name}</BurgerLink>
                   <RightArrow
-                    src='../../public/images/right-arrow.svg'
+                    src='images/right-arrow.svg'
                   />
                 </BurgerItem>
               ))
@@ -225,7 +225,7 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               </LanguageTitleContainer>
               <RightArrowContainer>
                 <RightArrow2
-                  src='../../public/images/right-arrow.svg'
+                  src='images/right-arrow.svg'
                 />
               </RightArrowContainer>
             </LanguageContainer>
@@ -237,32 +237,32 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               products={[
                 {
                   url: '/models',
-                  srcCar: '../../../public/images/vehicle-model-s.avif',
+                  srcCar: 'images/vehicle-model-s.avif',
                   title: 'Model S'
                 },
                 {
                   url: '/model3',
-                  srcCar: '../../../public/images/vehicle-model-3.avif',
+                  srcCar: 'images/vehicle-model-3.avif',
                   title: 'Model 3'
                 },
                 {
                   url: '/modelx',
-                  srcCar: '../../../public/images/vehicle-model-x.avif',
+                  srcCar: 'images/vehicle-model-x.avif',
                   title: 'Model X'
                 },
                 {
                   url: '/modely',
-                  srcCar: '../../../public/images/vehicle-model-y.avif',
+                  srcCar: 'images/vehicle-model-y.avif',
                   title: 'Model Y'
                 },
                 {
                   url: '/cybertruck',
-                  srcCar: '../../../public/images/vehicle-cybertruck.avif',
+                  srcCar: 'images/vehicle-cybertruck.avif',
                   title: 'Cybertruck'
                 },
                 {
                   url: '/choose',
-                  srcCar: '../../../public/images/vehicles-choose.avif',
+                  srcCar: 'images/vehicles-choose.avif',
                   title: 'Heelp Me Choose'
                 }
               ]}
@@ -276,22 +276,22 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               products={[
                 {
                   url: '/solar-panels',
-                  srcCar: '../../../public/images/energy-solar-panels.avif',
+                  srcCar: 'images/energy-solar-panels.avif',
                   title: 'Solar Panels'
                 },
                 {
                   url: '/solar-roof',
-                  srcCar: '../../../public/images/energy-solar-roof.avif',
+                  srcCar: 'images/energy-solar-roof.avif',
                   title: 'Solar Roof'
                 },
                 {
                   url: '/powerwall',
-                  srcCar: '../../../public/images/energy-powerwall.avif',
+                  srcCar: 'images/energy-powerwall.avif',
                   title: 'Powerwall'
                 },
                 {
                   url: '/megaapack',
-                  srcCar: '../../../public/images/energy-megapack.avif',
+                  srcCar: 'images/energy-megapack.avif',
                   title: 'Megapack'
                 }
               ]}
@@ -305,17 +305,17 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               products={[
                 {
                   url: '/charging',
-                  srcCar: '../../../public/images/charging-charging.avif',
+                  srcCar: 'images/charging-charging.avif',
                   title: 'Charging'
                 },
                 {
                   url: '/home-charging',
-                  srcCar: '../../../public/images/charging-home-charging.avif',
+                  srcCar: 'images/charging-home-charging.avif',
                   title: 'Home Charging'
                 },
                 {
                   url: '/supercharger',
-                  srcCar: '../../../public/images/charging-supercharging.avif',
+                  srcCar: 'images/charging-supercharging.avif',
                   title: 'Supercharging'
                 }
               ]}
@@ -426,9 +426,11 @@ const MenuUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+  `
 
 const ItemList = styled.li`
+  display: ${props => props.isView && 'none'};
+
   @media (max-width: 1115px) {
     display: ${props => props.isView ? 'block' : 'none'};
   }
