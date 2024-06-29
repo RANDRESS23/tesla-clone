@@ -19,7 +19,7 @@ export default function Section ({
       {
         title === 'Cybertruck'
           ? (
-            <TitleCybertruck src='../../public/images/cybertruck-title.webp' alt='Cybertruck' />
+            <TitleCybertruck src='images/cybertruck-title.webp' alt='Cybertruck' />
             )
           : (
             <TitleContent>
@@ -74,7 +74,7 @@ export default function Section ({
       {title === 'Model 3'
         ? (
           <DownArrow
-            src='../../public/images/down-arrow-dark.svg'
+            src='images/down-arrow-dark.svg'
             showNavBurger={showNavBurger}
             onClick={handleNextSection}
           />
@@ -94,7 +94,7 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: ${props => `url('../../public/images/${props.bgImage}')`};
+  background-image: ${props => `url('images/${props.bgImage}')`};
   scroll-snap-align: start;
 `
 

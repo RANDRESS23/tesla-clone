@@ -16,7 +16,7 @@ export default function InteriorModel ({ VIDEOS, EXTRA_INFO }) {
       <TitleInterior>Interior of the Future</TitleInterior>
       <InteriorModelImageContainer>
         <GradientBlackEffect />
-        <InteriorImage src='../../public/images/new-interior.webp' alt='' />
+        <InteriorImage src='images/new-interior.webp' alt='' />
       </InteriorModelImageContainer>
       <SliderVideosInterior
         VIDEOS={VIDEOS}

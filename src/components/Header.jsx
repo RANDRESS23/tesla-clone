@@ -334,22 +334,22 @@ export default function Header ({ showNavBurger, setShowNavBurger }) {
               products={[
                 {
                   url: '/charging',
-                  srcProduct: '../../../public/images/charging-home-charging.avif',
+                  srcProduct: 'images/charging-home-charging.avif',
                   title: 'Charging'
                 },
                 {
                   url: '/vehicle-accessories',
-                  srcProduct: '../../../public/images/shop-vehicle-accessories.avif',
+                  srcProduct: 'images/shop-vehicle-accessories.avif',
                   title: 'Vehicle Accessories'
                 },
                 {
                   url: '/apparel',
-                  srcProduct: '../../../public/images/shop-apparel.avif',
+                  srcProduct: 'images/shop-apparel.avif',
                   title: 'Apparel'
                 },
                 {
                   url: '/lifestyle',
-                  srcProduct: '../../../public/images/shop-lifestyle.avif',
+                  srcProduct: 'images/shop-lifestyle.avif',
                   title: 'Lifestyle'
                 }
               ]}

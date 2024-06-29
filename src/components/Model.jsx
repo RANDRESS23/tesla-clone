@@ -35,7 +35,7 @@ export default function Model ({ bgUrlImage, titleModel, SubTitleModel, stats })
         {
         TITLES_INCLUDES_DOWN_ARROW.includes(titleModel) && (
           <DownArrow
-            src='../../public/images/down-arrow-light.svg'
+            src='images/down-arrow-light.svg'
             onClick={handleNextSection}
           />
         )
@@ -54,7 +54,7 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: ${props => `url('../../public/images/${props.bgImage}')`};
+  background-image: ${props => `url('images/${props.bgImage}')`};
 `
 
 const Title = styled.h1`
